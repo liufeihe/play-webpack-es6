@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./components/table/table.scss">
+    
+    <title>page a</title>
+</head>
+<body>
+    <span id="span-a-date"></span>
+    <span id="span-a-text"></span>
+    <p id="span-d-text"></p>
+    <button id="changeTextSync">change</button>
+    <button id="changeTextWithPromise">change with promise</button>
+    <button id="changeTextWithAsync">change with async</button>
+    <button id="changeTableText">change table text</button>
+    <div id="component-table"> </div>
+
+    <script type="text/javascript" src="./libs/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="./pages/pageD.js"></script>
+    <script type="text/javascript">
+        require('./pages/pageA')
+    </script>
+</body>
+</html>
