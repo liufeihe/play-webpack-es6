@@ -1,0 +1,20 @@
+{
+  "name": "play-webpack-es6",
+  "version": "1.0.0",
+  "description": "import module && es6 feature for multipages project with webpack",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liufeihe/play-webpack-es6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liufeihe/play-webpack-es6/issues"
+  },
+  "homepage": "https://github.com/liufeihe/play-webpack-es6#readme"
+}
