@@ -1,5 +1,5 @@
-import {getDateStr} from '/modules/date.es6';
-import {getTextStr} from '/modules/text.es6';
+import {getDateStr} from '../../modules/date.es6';
+import {getTextStr} from '../../modules/text.es6';
 
 $(document).ready(function(){
     function setSpan(str, text) {
