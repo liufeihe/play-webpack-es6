@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/liufeihe/play-webpack-es6/issues"
   },
-  "homepage": "https://github.com/liufeihe/play-webpack-es6#readme"
+  "homepage": "https://github.com/liufeihe/play-webpack-es6#readme",
+  "devDependencies": {
+    "babel-loader": "^8.0.6"
+  }
 }
