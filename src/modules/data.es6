@@ -1,5 +1,5 @@
 const getDataSync = ()=>{
-    return 'hello java';
+    return 'hello java2';
 }
 
 const getDataWithPromise = ()=>{

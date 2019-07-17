@@ -1,3 +1,5 @@
+require('./table.scss')
+
 export class MyTable {
     constructor (el) {
         this.el = el

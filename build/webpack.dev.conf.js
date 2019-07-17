@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin'); 
+const copyWebpackPlugin = require('copy-webpack-plugin'); 
 
 const getEntries = ()=>{
     return {
@@ -29,10 +30,17 @@ let webpackCfg = {
             }
         ]
     },
-    plugins: []
+    plugins: [
+         //静态资源输出
+         new copyWebpackPlugin([{
+            from: path.resolve(__dirname, "../src/libs"),
+            to: './libs',
+            ignore: ['.*']
+        }])
+    ]
 }
 
-//生存多个页面
+//生成多个页面
 var pages = [
     {
         filename: 'a.html',
@@ -52,11 +60,10 @@ var pages = [
 ]
 pages.forEach(function(page) {
     var conf = {
-        template: page.template, // html模板路径
-        filename: page.filename, // 生成的html存放路径,文件名，相对于path
+        filename: page.filename, // 文件名，生成的html存放路径，相对于path
+        template: page.template, // html模板的路径
         chunks: [page.chunks],
         inject: 'body', // //js插入的位置
-        hash: false,
         minify: { // 压缩HTML文件
             removeComments: true, // 移除HTML中的注释
             collapseWhitespace: false, // 删除空白符与换行符
