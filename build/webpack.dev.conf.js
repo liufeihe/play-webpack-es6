@@ -1,7 +1,8 @@
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin'); 
-const copyWebpackPlugin = require('copy-webpack-plugin'); 
+const HtmlWebpackPlugin = require('html-webpack-plugin'); 
+const CopyWebpackPlugin = require('copy-webpack-plugin'); 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const utils = require('./utils.js')
 
 const getEntries = ()=>{
     return {
@@ -34,20 +35,49 @@ let webpackCfg = {
                 // ],
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader!sass-loader"
+                    use: [
+                        {
+                            loader: "css-loader"
+                        },
+                        {
+                            loader: "resolve-url-loader"
+                        },
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ]
                 })
             },
             {
                 test: /\.es6?$/,
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    // 配置 url-loader 的可选项
+                    options: {
+                    // 限制 图片大小 10000B，小于限制会将图片转换为 base64格式
+                      limit: 10000,
+                    // 超出限制，创建的文件格式
+                    // build/images/[图片名].[hash].[图片格式]
+                      name: utils.getAssetsPath('images/[name].[hash].[ext]')
+                   }
+                  }
+                ]
             }
         ]
     },
     plugins: [
          //静态资源输出
-         new copyWebpackPlugin([{
+         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, "../src/libs"),
-            to: './libs',
+            to: utils.getAssetsPath('libs'),
             ignore: ['.*']
         }]),
         new ExtractTextPlugin('css/[name].[hash].css')
@@ -84,6 +114,6 @@ pages.forEach(function(page) {
             removeAttributeQuotes: true
         },
     }
-    webpackCfg.plugins.push(new htmlWebpackPlugin(conf))
+    webpackCfg.plugins.push(new HtmlWebpackPlugin(conf))
 });
 module.exports = webpackCfg;
