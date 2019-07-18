@@ -3,6 +3,8 @@ import {getTextStr} from '../../modules/text.es6';
 import {getDataSync, getDataWithPromise, getDataWithAsync} from '../../modules/data.es6';
 import {MyTable} from '../../components/table/table.es6';
 
+import './a.scss';
+
 $(document).ready(function(){
     let table = new MyTable('component-table')
     const setSpan = (str, text) => {

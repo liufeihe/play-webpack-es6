@@ -1,6 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin'); 
 const copyWebpackPlugin = require('copy-webpack-plugin'); 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const getEntries = ()=>{
     return {
@@ -25,6 +26,18 @@ let webpackCfg = {
     module: {
         rules: [
             {
+                test: /\.scss$/,
+                // use: [
+                //     "style-loader",
+                //     "css-loader",
+                //     "sass-loader"
+                // ],
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader!sass-loader"
+                })
+            },
+            {
                 test: /\.es6?$/,
                 loader: 'babel-loader'
             }
@@ -36,7 +49,8 @@ let webpackCfg = {
             from: path.resolve(__dirname, "../src/libs"),
             to: './libs',
             ignore: ['.*']
-        }])
+        }]),
+        new ExtractTextPlugin('css/[name].[hash].css')
     ]
 }
 

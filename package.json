@@ -19,9 +19,14 @@
   },
   "homepage": "https://github.com/liufeihe/play-webpack-es6#readme",
   "devDependencies": {
-    "@babel/core": "^7.5.4",
+    "@babel/core": "^7.5.5",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.3",
-    "html-webpack-plugin": "^3.2.0"
+    "css-loader": "^3.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
   }
 }

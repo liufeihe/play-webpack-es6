@@ -4,7 +4,7 @@ import {getTextStr} from '../../modules/text.es6';
 $(document).ready(function(){
     function setSpan(str, text) {
         $('#span-c-date').text(str)
-        $('#span-c-text').text(text)
+        $('#span-c-text').text(text+', c')
     }
     
     setSpan(getDateStr(), getTextStr());

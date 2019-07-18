@@ -1,4 +1,4 @@
-require('./table.scss')
+import './table.scss';
 
 export class MyTable {
     constructor (el) {
