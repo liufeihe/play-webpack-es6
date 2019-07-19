@@ -103,6 +103,11 @@ var pages = [
         chunks: 'a'
     },
     {
+        filename: 'a_m.html',
+        template: 'src/pages/a/a_m.html',
+        chunks: 'a'
+    },
+    {
         filename: 'b.html',
         template: 'src/pages/b/b.html',
         chunks: 'b'
