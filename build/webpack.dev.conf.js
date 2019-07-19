@@ -24,7 +24,13 @@ let webpackCfg = {
         contentBase: false,
         publicPath: '/',
         port: 8080,
-        open: true
+        open: true,
+        proxy: {
+            '/stock/*': {
+                target: 'https://guorn.com',
+                changeOrigin: true
+              }
+        }
     },
     module: {
         rules: [

@@ -44,6 +44,23 @@ $(document).ready(function(){
             url = picMap[Math.round(Math.random(1))];
             $('img')[0].src = url;//require(url);
         });
+
+        $('#getRemoteList').click(()=>{
+            $.ajax({
+                type: 'GET',
+                url: '/stock/mall?fmt=json&size=9&page=1&order=quarter_return&asc=0',
+                processData: false
+            }).always(function (data) {
+                var cnt = $('div.remote-list'), lists;
+                data = JSON.parse(data);
+                lists = data.data.strategy_list || [];
+                cnt.empty();
+                lists.forEach(strategy => {
+                    let item = '<p>'+strategy.name+'\t'+strategy.quarter_return+'\t'+strategy.annual_return+'</p>';
+                    cnt.append(item)
+                });
+            });
+        });
     }
     
     setSpan(getDateStr(), getTextStr());
