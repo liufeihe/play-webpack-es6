@@ -38,6 +38,12 @@ $(document).ready(function(){
             let num = parseInt(Math.random()*1000)
             table.setData(num);
         })
+
+        $('#changePic').click(()=>{
+            let picMap = [require('../../assets/images/adv_course.png'), require('../../assets/images/adv_realscreen.png')], 
+            url = picMap[Math.round(Math.random(1))];
+            $('img')[0].src = url;//require(url);
+        });
     }
     
     setSpan(getDateStr(), getTextStr());

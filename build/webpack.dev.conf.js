@@ -14,18 +14,29 @@ const getEntries = ()=>{
 
 let webpackCfg = {
     entry: getEntries(),
-    devServer: {
-        index: 'a.html',
-        contentBase: './dist',
-        // port: 8080,
-        open: true
-    },
     output: {
         path: path.resolve(__dirname, '../dist'),
+        publicPath: '/',
         filename: 'js/[name]-[chunkhash].js'
+    },
+    devServer: {
+        index: 'a.html',
+        contentBase: false,
+        publicPath: '/',
+        port: 8080,
+        open: true
     },
     module: {
         rules: [
+            {
+                test: /\.html$/,
+                use: {
+                    loader: 'html-loader'
+                    // options: {
+                    //     attrs: []
+                    // }
+                }
+            },
             {
                 test: /\.scss$/,
                 // use: [
@@ -56,7 +67,7 @@ let webpackCfg = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
+                test: /\.(png|jpe?g|gif|svg)$/i,
                 use: [
                   {
                     loader: 'url-loader',
@@ -66,7 +77,7 @@ let webpackCfg = {
                       limit: 10000,
                     // 超出限制，创建的文件格式
                     // build/images/[图片名].[hash].[图片格式]
-                      name: utils.getAssetsPath('images/[name].[hash].[ext]')
+                      name: 'images/[name].[hash].[ext]'//utils.getAssetsPath('images/[name].[hash].[ext]')
                    }
                   }
                 ]
@@ -77,7 +88,7 @@ let webpackCfg = {
          //静态资源输出
          new CopyWebpackPlugin([{
             from: path.resolve(__dirname, "../src/libs"),
-            to: utils.getAssetsPath('libs'),
+            to: 'libs/',//utils.getAssetsPath('libs'),
             ignore: ['.*']
         }]),
         new ExtractTextPlugin('css/[name].[hash].css')
