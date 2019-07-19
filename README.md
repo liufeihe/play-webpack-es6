@@ -5,3 +5,5 @@ import module && es6 feature for multipages project with webpack
 cnpm i -g webpack
 <br>cnpm i -g webpack-cli
 <br>cnpm i -g webpack-dev-server
+
+<br>其他的使用cnpm install安装即可
