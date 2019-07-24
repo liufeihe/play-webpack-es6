@@ -6,7 +6,7 @@ import {MyTable} from '../../components/table/table.es6';
 import './a.scss';
 
 $(document).ready(function(){
-    let table = new MyTable('component-table')
+    let table = new MyTable('pageA')
     const setSpan = (str, text) => {
         $('#span-a-date').text(str)
         $('#span-a-text').text(text)

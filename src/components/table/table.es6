@@ -9,7 +9,7 @@ export class MyTable {
         this.render()
     }
     render () {
-        let data = this.data, cnt = $('#'+this.el)
+        let data = this.data, cnt = $('.component-table.'+this.el)
         cnt.empty()
         cnt.append('table:'+data)
     }
