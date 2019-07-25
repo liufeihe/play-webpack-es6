@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 const CopyWebpackPlugin = require('copy-webpack-plugin'); 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const utils = require('./utils.js')
+// const utils = require('./utils.js')
 
 const getEntries = ()=>{
     return {
